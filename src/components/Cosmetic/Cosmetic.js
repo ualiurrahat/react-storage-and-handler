@@ -1,13 +1,16 @@
 import React from 'react';
 import './Cosmetic.css'
+import { addToDataBase } from '../../utilities/fakedb';
 
 const Cosmetic = (props) => {
     // destructuring cosmetic object
     const {name,price,id} = props.cosmetic;
+  
     const addToCart =(id) =>{
-        console.log("item added", id);
+    addToDataBase(id);
     }
-    const addToCartWrapper = () => addToCart(id);
+    // function wrapper for addToCart().
+    // const addToCartWrapper = () => addToCart(id);
     return (
         <div className='product'>
             <h3>Product:{name}</h3>
