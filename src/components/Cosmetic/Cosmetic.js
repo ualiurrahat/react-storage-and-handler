@@ -1,6 +1,6 @@
 import React from 'react';
 import './Cosmetic.css'
-import { addToDataBase } from '../../utilities/fakedb';
+import { addToDataBase, removeFromDataBase } from '../../utilities/fakedb';
 
 const Cosmetic = (props) => {
     // destructuring cosmetic object
@@ -11,14 +11,17 @@ const Cosmetic = (props) => {
     }
     // function wrapper for addToCart().
     // const addToCartWrapper = () => addToCart(id);
+
+    const removeFromCart = id =>{
+        removeFromDataBase(id);
+    }
     return (
         <div className='product'>
             <h3>Product:{name}</h3>
             <p>ID:{id}</p>
             <p>Price:${price}</p>
-            {/* <button onClick={addToCartWrapper}>Add to Cart</button>
-             */}
              <button onClick={() => addToCart(id)}>Add to Cart</button>
+             <button onClick={() => removeFromCart(id)}>Remove</button>
         </div>
     );
 };
